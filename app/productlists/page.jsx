@@ -1,5 +1,5 @@
 import Link from "next/link"
-
+import Home from "./product";
 async function productList() {
     let data = await fetch ("https://dummyjson.com/products")
     data = await data.json();
@@ -11,10 +11,13 @@ export default async function page () {
     return(
         <div>
             <h1 className="text-4xl m-5 items-center font-extrabold flex justify-center">Product List server side</h1>
+            <div className="inline-flex items-cente">
+                <Home />
             <Link className="m-5 text-red-800 rounded-lg shadow-md font-bold bg-slate-300 p-2 border-2 border-black" href='/'>Home</Link>
+            </div>
             {
                 products.map((item)=>(
-                    <h3 className='m-5 text-green-950 max-w-md mx-auto rounded-lg shadow-md font-bold bg-slate-300 p-2 border-2 border-black' key={item.id}>Company: {item.title}</h3>
+                    <h3 className='m-5 hover:bg-white text-green-950 max-w-md mx-auto rounded-lg shadow-md font-bold bg-slate-300 p-2 border-2 border-black' key={item.id}>Company: {item.title}</h3>
                 ))
             }
         </div>

@@ -1,7 +1,6 @@
 import Link from "next/link";
 import Home from "./product";
 import Image from "next/image";
-
 async function productList() {
   let data = await fetch("https://dummyjson.com/products");
   data = await data.json();
@@ -12,13 +11,8 @@ export default async function Page() {
   let products = await productList();
 
   return (
+    <>
     <div className="bg-gray-100 min-h-screen py-10">
-      <h1 className="text-5xl font-extrabold text-center text-gray-800 mb-10">
-        Product List (Server Side)
-      </h1>
-      <div className="flex items-center justify-center mb-8 space-x-5">
-        <Home />
-      </div>
       <div className="flex flex-wrap gap-8 justify-center px-5">
         {products.map((item) => (
           <div key={item.id} className="flex flex-col items-center">
@@ -50,6 +44,7 @@ export default async function Page() {
         ))}
       </div>
     </div>
+    </>
   );
 }
 
@@ -63,4 +58,3 @@ export async function generateStaticParams() {
 
 
 
-// hover:scale-110 transition-transform duration-200 ease-out
